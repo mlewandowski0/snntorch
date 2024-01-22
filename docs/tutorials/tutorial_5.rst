@@ -190,9 +190,6 @@ The backward-pass derivative used is:
 
 
 .. math::
-    
-    \frac{\partial \tilde{S}}{\partial U} \leftarrow \frac{1}{π}\frac{1}{(1+[Uπ]^2)}
-
 
     \frac{\partial \tilde{S}}{\partial U} \leftarrow \frac{1}{\pi}\frac{1}{(1+[U\pi]^2)}
 
@@ -391,10 +388,10 @@ training a fully-connected spiking neural net.
 
     # dataloader arguments
     batch_size = 128
-    data_path='/data/mnist'
+    data_path='/tmp/data/mnist'
     
     dtype = torch.float
-    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
 
 ::
 
